@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct  7 08:56:14 2025
+import numpy as np
 
-@author: laure
-"""
-
+gender, age, occupation, sleep_duration, quality_sleep, physical_activity, stress_levels, BMI, blood_pressure = np.loadtxt("Sleep_health_and_lifestyle_dataset.csv" , usecols = (2, 3, 4, 5, 6, 7, 8, 9, 10), unpack=True)
