@@ -1,3 +1,6 @@
-import numpy as np
-
-Age, Sleep_duration, Quality_sleep, Physical_activity, Stress_levels = np.loadtxt("Sleep_health_and_lifestyle_dataset.csv" ,  skiprows=1, usecols=(2, 4, 5, 6, 7), unpack=True, delimiter=',')
+#   Changed how we impotded our data so we can import strings as well
+import pandas as pd
+data = pd.read_csv("Sleep_health_and_lifestyle_dataset.csv")
+# These will be the varables that we will use, that are intresting (When putting _ was not working)
+print(data["Gender"], data["Age"], data["Sleep Duration"], data["Quality of Sleep"], data["Physical Activity Level"], data["Stress Level"], data["BMI Category"], data["Blood Pressure"], data["Sleep Disorder"])
+                                                               
