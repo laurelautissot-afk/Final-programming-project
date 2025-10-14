@@ -39,7 +39,7 @@ plt.show() #like print
 ############################### D ############################################
 #Scatter plot: Sleep Duration vs Quality of Sleep (Males Only) with grid
 #The scatter plot shows how sleep duration relates to sleep quality for males. It helps identify trends, such as whether longer or shorter sleep affects quality.
-plt.scatter(filtered_data["Sleep Duration"], filtered_data["Quality of Sleep"], color="pink")
+plt.scatter(filtered_data["Sleep Duration"], filtered_data["Quality of Sleep"], color="pink", edgecolor='red')
 plt.xlabel("Sleep Duration (Hours)")
 plt.ylabel("Quality of Sleep")
 plt.title("Quality of Sleep vs Sleep Duration (Males Only)")
@@ -51,10 +51,11 @@ plt.show()
 
 
 
+
 ############################# F ############################################
 # Scatter plot: Physical activity Vs. Stress levels. 
 #To see the realationship between the two and if performing more physical activity improves stress, which therfore impoves sleep.
-plt.scatter(filtered_data["Physical Activity Level"], filtered_data["Stress Level"], color="pink")
+plt.scatter(filtered_data["Physical Activity Level"], filtered_data["Stress Level"], color="pink", edgecolor="red")
 plt.xlabel("Physical Activity Level")
 plt.ylabel("Stress Level")
 plt.title("Physical Activity vs Stress Level (Males Only)")
@@ -62,7 +63,50 @@ plt.grid()
 plt.show()
 
 ############################ G ############################################
-
+#Bar plot
+#How many males in each stress level
+stress_count=filtered_data["Stress Level"].value_counts()
+plt.bar(stress_count.index, stress_count.values, color='pink', edgecolor='red')
+plt.title("Stress Level (Males Only)")
+plt.xlabel("Stress Level")
+plt.ylabel("Number of Males")
+plt.show()
+#Bar plot
+#How many males per quality of sleep
+stress_count=filtered_data["Quality of Sleep"].value_counts()
+plt.bar(stress_count.index, stress_count.values, color='pink', edgecolor='red')
+plt.title("Quality of Sleep (Males Only)")
+plt.xlabel("Quality of Sleep")
+plt.ylabel("Number of Males")
+plt.show()
 ################################# H #######################################
+#Histogram:
+#To show how long males sleep
+plt.hist(filtered_data["Sleep Duration"], bins=8, color='pink', edgecolor= 'red')
+plt.title("Sleep Duration (Males Only)")
+plt.xlabel("Hours of Sleep")
+plt.ylabel("Number of Males")
+plt.show()
+#Histogram:
+#To show how many steps males walk
+plt.hist(filtered_data["Daily Steps"], bins=14, color='pink', edgecolor= 'red')
+plt.title("Daily Steps (Males Only)")
+plt.xlabel("Daily Steps")
+plt.ylabel("Number of Males")
+plt.show()
 
 ################################# I ########################################
+#Pie chart: BMI Category among Males
+#To show the different and most common health status of males, its visual and clear.
+filtered_data["BMI Category"]= filtered_data["BMI Category"].replace({"Normal": "Normal Weight"})
+bmi_counts = filtered_data["BMI Category"].value_counts()
+plt.pie(bmi_counts, labels=bmi_counts.index, autopct='%1.1f%%', colors=["pink", "purple", "red"])
+plt.title("BMI Categories (Males Only)")
+plt.show()
+#Pie chart: Sleep Disorder among Males
+#To show the different and most common sleep disorders of males, its visual and clear.
+filtered_data["Sleep Disorder"]=filtered_data["Sleep Disorder"].fillna("None")
+disorder_counts = filtered_data["Sleep Disorder"].value_counts(dropna=False)
+plt.pie(disorder_counts, labels=disorder_counts.index, autopct='%1.1f%%', colors=["pink", "purple", "red"])
+plt.title("Sleep Disorders (Males Only)")
+plt.show()
