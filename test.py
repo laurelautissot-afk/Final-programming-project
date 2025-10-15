@@ -3,7 +3,7 @@
 #Changed how we imported our data so we can import strings as well
 import pandas as pd
 data = pd.read_csv("Sleep_health_and_lifestyle_dataset.csv")
-# These will be the varables that we will use, that are intresting (When putting _ was not working)
+# These will be the variables that we will use, that are intresting (When putting _ was not working)
 # This is the uniltered data
 print(data["Gender"], data["Age"], data["Sleep Duration"], data["Quality of Sleep"], data["Physical Activity Level"], data["Stress Level"], data["BMI Category"], data["Blood Pressure"], data["Sleep Disorder"])
 
@@ -75,8 +75,8 @@ plt.grid()
 plt.show()
 
 ############################ G ######################################################################################################################################################################
-#Bar plot
-#How many males in each stress level
+#Bar plot: Number of males in each stress level, number of males in each quality of sleep level
+#To visualy organize how many males in each stress level and show the distribution
 stress_count=filtered_data["Stress Level"].value_counts()
 plt.bar(stress_count.index, stress_count.values, color='pink', edgecolor='red')
 plt.title("Stress Level (Males Only)")
@@ -84,7 +84,7 @@ plt.xlabel("Stress Level")
 plt.ylabel("Number of Males")
 plt.show()
 #Bar plot
-#How many males per quality of sleep
+#To visualy organize how many males per quality of sleep index and show the distribution
 stress_count=filtered_data["Quality of Sleep"].value_counts()
 plt.bar(stress_count.index, stress_count.values, color='pink', edgecolor='red')
 plt.title("Quality of Sleep (Males Only)")
@@ -92,15 +92,14 @@ plt.xlabel("Quality of Sleep")
 plt.ylabel("Number of Males")
 plt.show()
 ################################# H #################################################################################################################################################################
-#Histogram:
-#To show how long males sleep
+#Histogram: used to organize continuous values
+#To show the distribution of how long males sleep
 plt.hist(filtered_data["Sleep Duration"], bins=8, color='pink', edgecolor= 'red')
 plt.title("Sleep Duration (Males Only)")
 plt.xlabel("Hours of Sleep")
 plt.ylabel("Number of Males")
 plt.show()
-#Histogram:
-#To show how many steps males walk
+#To show the distribution of how many steps males walk
 plt.hist(filtered_data["Daily Steps"], bins=14, color='pink', edgecolor= 'red')
 plt.title("Daily Steps (Males Only)")
 plt.xlabel("Daily Steps")
