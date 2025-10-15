@@ -1,4 +1,4 @@
-############################### PART 3 #####################################
+############################### PART 3 #############################################################################################################################################
 
 #Changed how we imported our data so we can import strings as well
 import pandas as pd
@@ -20,9 +20,10 @@ filtered_data = pd.DataFrame(filtered_rows)
 print(filtered_data)
 
 
-############################### PART 4 #######################################
+############################### PART 4 #################################################################################################################################################################
 import matplotlib.pyplot as plt
-############################### C ###########################################
+
+############################### C #####################################################################################################################################################################
 # Import a bar graph: Sleep duration Vs. Occupation, to analyse their relationship.
 #The relationship between occupation and sleep is important because different jobs can affect sleep duration. Job demands can influence how much rest people get. So important to analyse the realationship.
 # Group data by Occupation and calculate average Sleep duration (aka mean)
@@ -36,7 +37,7 @@ plt.title("Average Sleep Duration by Occupation (Males Only)")
 plt.xticks(rotation=90)
 plt.show() #like print
 
-############################### D ############################################
+############################### D ######################################################################################################################################################################
 #Scatter plot: Sleep Duration vs Quality of Sleep (Males Only) with grid
 #The scatter plot shows how sleep duration relates to sleep quality for males. It helps identify trends, such as whether longer or shorter sleep affects quality.
 plt.scatter(filtered_data["Sleep Duration"], filtered_data["Quality of Sleep"], color="pink", edgecolor='red')
@@ -46,13 +47,24 @@ plt.title("Quality of Sleep vs Sleep Duration (Males Only)")
 plt.grid()
 plt.show()
 
-############################## E ###########################################
+############################## E #####################################################################################################################################################################
+#Two subplots side by side in one figure
+#Example: Compare "Age  vs Sleep Duration" and "Age vs Stress Level" (Males Only)
+#This shows the realation between how sleep duration changes with age and how stress levels change with age as well.
+fig, axes = plt.subplots(1, 2) # this creates single figure that has teo sublots (Axes) in it.1 = row 2 = collums.
+#Have to add axe and set to diffrenetiat between them ( because each suplot has its own SET of axes)
+# Subplot 1 (axe 0): Age Vs Sleep Duration (want scatter)
+axes[0].scatter(filtered_data["Age"], filtered_data["Sleep Duration"], color="magenta")
+axes[0].set_title("Age vs Sleep Duration (Males)")
+axes[0].set_xlabel("Age")
+axes[0].set_ylabel("Sleep Duration (Hours)")
+# Subplot 2 (axe 1): Age Vs Stress level
+axes[1].scatter(filtered_data["Age"], filtered_data["Stress Level"], color="pink")
+axes[1].set_title("Age vs Stress Level (Males)")
+axes[1].set_xlabel("Age")
+axes[1].set_ylabel("Stress Level")
 
-
-
-
-
-############################# F ############################################
+############################# F ######################################################################################################################################################################
 # Scatter plot: Physical activity Vs. Stress levels. 
 #To see the realationship between the two and if performing more physical activity improves stress, which therfore impoves sleep.
 plt.scatter(filtered_data["Physical Activity Level"], filtered_data["Stress Level"], color="pink", edgecolor="red")
@@ -62,7 +74,7 @@ plt.title("Physical Activity vs Stress Level (Males Only)")
 plt.grid()
 plt.show()
 
-############################ G ############################################
+############################ G ######################################################################################################################################################################
 #Bar plot
 #How many males in each stress level
 stress_count=filtered_data["Stress Level"].value_counts()
@@ -79,7 +91,7 @@ plt.title("Quality of Sleep (Males Only)")
 plt.xlabel("Quality of Sleep")
 plt.ylabel("Number of Males")
 plt.show()
-################################# H #######################################
+################################# H #################################################################################################################################################################
 #Histogram:
 #To show how long males sleep
 plt.hist(filtered_data["Sleep Duration"], bins=8, color='pink', edgecolor= 'red')
@@ -95,7 +107,7 @@ plt.xlabel("Daily Steps")
 plt.ylabel("Number of Males")
 plt.show()
 
-################################# I ########################################
+################################# I ##################################################################################################################################################################
 #Pie chart: BMI Category among Males
 #To show the different and most common health status of males, its visual and clear.
 filtered_data["BMI Category"]= filtered_data["BMI Category"].replace({"Normal": "Normal Weight"})
