@@ -1,8 +1,3 @@
-######################################################################################################################################################################################################
-######################################################################################################################################################################################################
-######################################################################################################################################################################################################
-######################################################################################################################################################################################################
-
 
 #Programming in Science 401-SN1-RE sect.00004 and sect.00003
 #Tiago Bortoletto Vaz
@@ -21,16 +16,22 @@ data = pd.read_csv("Sleep_health_and_lifestyle_dataset.csv")
 print(data["Gender"], data["Age"], data["Sleep Duration"], data["Quality of Sleep"], data["Physical Activity Level"], data["Stress Level"], data["BMI Category"], data["Blood Pressure"], data["Sleep Disorder"])
 
 
-# Filter data: apply filter using loops and conditionals: We will only look at males
-# Create an empty list to add all roles where the gender is male.
-filtered_rows = []
+# Filter data: apply filter using loops and conditionals: We have to seprate male and females to compare both datas.
+# Create an empty list to add all roles where the gender is male and edited it to add another for females
+male_rows = []
+female_rows = []
 # Note: Data iterrows is a pandas DataFrame method that lets you loop (iterate) through each row of your DataFrame one by one.
 for i, row in data.iterrows():
     if row["Gender"] == "Male":
-        filtered_rows.append(row)
+        male_rows.append(row)
+    elif row["Gender"] == "Female":
+        female_rows.append(row)
 # Convert the list back to a DataFrame
-filtered_data = pd.DataFrame(filtered_rows)
-print(filtered_data)
+male_rows = pd.DataFrame(male_rows)
+female_rows = pd.DataFrame(female_rows)
+print(male_rows)
+print(female_rows)
+
 
 
 ########################### 2) Preliminary steps #####################################################################################################################################################
