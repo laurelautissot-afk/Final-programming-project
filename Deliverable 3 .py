@@ -10,6 +10,9 @@
 
 #Import data 
 import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
 data = pd.read_csv("Sleep_health_and_lifestyle_dataset.csv")
 # These will be the variables that we will use, that are intresting # Note: (When putting _ was not working)
 # This is the uniltered data
@@ -74,9 +77,31 @@ print(female_rows)
 ################################# 5) Multivariate non graphical EDA ####################################################################################################################################
 
 ##################################### a ############################################################################################################################################################
+# 1) The realtionship between Gender and Sleep Disorder. This can be done using boxplaot. Here one axis is numercial and the other is categorical.
+#This plot shows the median sleep duration and spead for both genders 
+sns.catplot(data=data, x= "Gender", y="Sleep Duration", kind="box")
+plt.title("Comparison between males and females with sleep durations")
+plt.xlabel("Gender") #category
+plt.ylabel("Sleep Duration") #numercial
+plt.show()
+# 2) The raltionship between BMIcategory and Quality of sleep conditioned by gender. We can use  scatterplots to visualize how Quality of Sleep changes with BMI Category.
+sns.catplot(data=data,x="BMI Category", y="Quality of Sleep", kind="bar", hue="Gender")
+plt.title("Quality of Sleep by BMI Category with Gender ")
+plt.xlabel("BMI Category")
+plt.ylabel("Quality of Sleep")
+plt.show()
+#3) Physical Activity vs Sleep duration  conditioned by Gender. We can use the scatter (swarm) to visualize their relatioship.
+sns.catplot(data=data, x="Physical Activity Level", y="Sleep Duration", hue="Gender", kind="swarm")
+plt.title("Sleep Duration by Activity Level with Gender")
+plt.xlabel("Physical Activity Level")
+plt.ylabel("Sleep Duration")
+plt.show()
 
 ###################################### b ###########################################################################################################################################################
-
+# We use pd.crosstab() with the “normalize” parameter to show proportions (in %) rather than raw counts.
+#1) Relationship between Gender and Sleep Disorder
+#2) Relationship between BMI Category and Sleep Disorder
+#3) Reationship between Sleep Duratuon and Physical Activity levleks
 ###################################### c ###########################################################################################################################################################
 
 
