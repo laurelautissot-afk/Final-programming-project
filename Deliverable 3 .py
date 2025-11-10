@@ -61,9 +61,13 @@ print(data.isnull())
 #This fonction allows us to ignore the person ID column because calculating their statistical relationship doesn't provide any important information
 #The axis 1 argument is to specify that we want to drop the whole column and not just a singular row
 excluding_person_ID = data.drop('Person ID' , axis=1)
+#missing median, mode, variance,kurtosis
 
 #Prints all stat relationships but excludes the one we didnt want
 print(excluding_person_ID.describe())
+#mode
+total_occupations = len(data)
+print((data.value_counts()/total_occupations))
 
 #Analysing the data of our categorical values
 print(data.value_counts('Occupation'))
@@ -76,15 +80,15 @@ print(data['Occupation'].mode())
 
 
 print(data.value_counts('BMI Category'))
-total_occupations = len(data)
 print((data.value_counts('BMI Category')/total_occupations))
 print(data['BMI Category'].mode())
 
 
 print(data.value_counts('Sleep Disorder'))
-total_occupations = len(data)
 print((data.value_counts('Sleep Disorder')/total_occupations))
 print(data['Sleep Disorder'].mode())
+##MISSING NUMBER OF UNIQUE CATEGORIES
+
 ############################### 4) Univariate graphical EDA ###########################################################################################################################################
 
 ##################################### a ############################################################################################################################################################
