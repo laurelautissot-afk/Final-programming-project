@@ -40,21 +40,51 @@ print(female_rows)
 ########################### 2) Preliminary steps #####################################################################################################################################################
 
 ##################################### a ###########################################################################################################################################################
+#Prints out different statistical relationships between for each column
 
+print(data.describe())
 ###################################### b ##########################################################################################################################################################
+#Allows us to is there are any duplicates in each individual rows
+#However since each row is unique we dont need to drop any rows
 
+duplicated_entries = data.duplicated() 
+print(duplicated_entries)
 ######################################## c #########################################################################################################################################################
+#Allows us to identify is any of our rows have any missing information, which none of them do
+#So its not neccesary to delete any rows
 
+print(data.isnull())
 ######################################## d #########################################################################################################################################################
 
 
-
-
 ############################## 3) Univariate non graphical EDA ########################################################################################################################################
+#This fonction allows us to ignore the person ID column because calculating their statistical relationship doesn't provide any important information
+#The axis 1 argument is to specify that we want to drop the whole column and not just a singular row
+excluding_person_ID = data.drop('Person ID' , axis=1)
+
+#Prints all stat relationships but excludes the one we didnt want
+print(excluding_person_ID.describe())
+
+#Analysing the data of our categorical values
+print(data.value_counts('Occupation'))
+#calculates the proportions of occupations for our sample size
+total_occupations = len(data)
+print((data.value_counts('Occupation')/total_occupations))
+#the mode of the categorical columns(most frequently and num unique categories )
+print(data['Occupation'].mode())
 
 
 
+print(data.value_counts('BMI Category'))
+total_occupations = len(data)
+print((data.value_counts('BMI Category')/total_occupations))
+print(data['BMI Category'].mode())
 
+
+print(data.value_counts('Sleep Disorder'))
+total_occupations = len(data)
+print((data.value_counts('Sleep Disorder')/total_occupations))
+print(data['Sleep Disorder'].mode())
 ############################### 4) Univariate graphical EDA ###########################################################################################################################################
 
 ##################################### a ############################################################################################################################################################
