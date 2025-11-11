@@ -121,17 +121,17 @@ steps_skew = skew(data['Daily Steps'])
 
 my_list = (age_skew , duration_skew , quality_skew , activity_skew , stress_skew , heart_rate_skew , steps_skew)
 
-print(my_list)
+
 
 for item in my_list:
     if item == 0:
-        print("The distribution is symetrical")
-    
+        print("The distribution is symetrical" , item)
+#by adding the variable item, we are also printing out the value assigned to the variable so we can see why they are leaning to one side    
     if item < 0:
-            print("The left side of the distribution is favoured")
+            print("The left side of the distribution is favoured for" , item)
 
     else:
-        print("The right side of the distribution is favoured")
+        print("The right side of the distribution is favoured" , item )
 
 #Kurtosis for each column
 #Kurtosis is essentially the amount of values/the probability of falling outside of the normal curve. They represent the tail ends of the normal distributon.
