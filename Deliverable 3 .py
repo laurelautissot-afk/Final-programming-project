@@ -157,32 +157,34 @@ print("The number of unique types of sleep disorders is:", data['Sleep Disorder'
 #   Q: Make use of this approach at least 3 times with different variables from your dataset. 
 #1) The realtionship between Gender and Sleep Disorder. This can be done using boxplaot. Here one axis is numercial and the other is categorical.
 #This plot shows the median sleep duration and spead for both genders 
-#sns.catplot(data=data, x= "Gender", y="Sleep Disorder", kind="violin")
-#plt.title("Comparison between males and females with sleep durations")
-#plt.xlabel("Gender") #category
-#plt.ylabel("Sleep Duration") 
-#plt.show()
+sns.catplot(data=data, x= "Sleep Disorder", y="Quality of Sleep", hue= "Gender", kind="violin", inner=None)
+plt.title("Comparison between males and females, with their reationship between Quality of Sleep and Sleep Disorders")
+plt.ylabel("Quality of Sleep") #category
+plt.xlabel("Sleep Duration") 
+plt.show()
 # 2) The raltionship between BMIcategory and Quality of sleep conditioned by gender. We can use  scatterplots to visualize how Quality of Sleep changes with BMI Category.
-#sns.catplot(data=data,x="BMI Category", y="Sleep Disorder", kind="bar", hue="Gender")
-#plt.title(" BMI Category how it effect Sleep Disorder with Gender ")
-#plt.xlabel("BMI Category")
-#plt.ylabel("Sleep Disorder")
-#plt.show()
+sns.catplot(data=data,x="BMI Category", y="Heart Rate", kind="bar", hue="Gender")
+plt.title(" Comparison between males and females, with their BMI Category how it effect their Heart Rate ")
+plt.xlabel("BMI Category")
+plt.ylabel("Heart Rate")
+plt.show()
 #3) Occupation vs Sleep duration  conditioned by Gender. We can use the scatter (swarm) to visualize their relatioship.
-#sns.catplot(data=data, x="Occupation", y="Sleep Duration", hue="Gender", kind="swarm")
-#plt.title("Occupation by Activity Level with Gender")
-#plt.xlabel("Occupation")
-#plt.ylabel("Sleep Duration")
-#plt.show()
+sns.catplot(data=data, y="Occupation", x="Sleep Duration", hue="Gender", jitter= True)#in order to see how many data points per category
+plt.title("The Relationship between Occupation and Sleep Duration conditionned by Gender")
+plt.ylabel("Occupation")
+plt.xlabel("Sleep Duration")
+plt.show()
+sns.catplot(data=data, y="Occupation", x="Sleep Duration", hue="Gender", jitter=False)
+plt.title("The Relationship between Occupation and Sleep Duration conditionned by Gender")
+plt.ylabel("Occupation")
+plt.xlabel("Sleep Duration")
+plt.show()
 
 ###################################### b ###########################################################################################################################################################
-# Q: Now use proportions or percentages rather than raw counts (use the “normalize” parameter from crosstab())
-# corsstab will compute a simple cross tabulation of two (or more) factors / The normalize parameter in pd.crosstab() converts raw counts into proportions or percentages instead of showing just totals.
-# 1
-# 2
-# 3
+
+
 ###################################### c ###########################################################################################################################################################
-# Q
+# Q Generate at least one three-way frequency table (3 or more variables, by giving a list of variables to crosstab() rather than single variables)
 
 
 
@@ -191,68 +193,69 @@ print("The number of unique types of sleep disorders is:", data['Sleep Disorder'
 ##################################### a ############################################################################################################################################################
 # a ) 1 plot using Faceting feature (col parameter in the relplot() function) 
 # The Relationship between Age and Sleep Duration
-#sns.relplot( data=data, x="Age", y="Sleep Duration", col="Gender", kind="scatter")
-#plt.suptitle("The Realationship between Age and Sleep Duration")
-#plt.show()
+sns.relplot( data=data, x="Age", y="Sleep Duration", col="Gender", kind="scatter")
+plt.suptitle("The Realationship between Age and Sleep Duration")
+plt.show()
 
 # b ) 1 plot representing 5 variables at once (x, y, hue, size, col)
 # Using same as 1: Relationship between age and Sleep duration
 # (will write seperently to explain each variable )
-#sns.relplot( data=data,
-   # x="Age", y="Sleep Duration",
-    #hue="Gender",              # Note: Colors that represent males and females 
-    #size="Quality of Sleep",   # Note: point size shows sleep quality rating
-    #col="Sleep Disorder",      # Note:represents the facet by disorder type
-   # kind="scatter",
-#)
-#plt.title("The Realationship between Age and Sleep Duration (Added colors for gender, sized by Sleep Quality, and aceted by Sleep Disorder")
-#plt.show()
+sns.relplot( data=data,
+    x="Age", y="Sleep Duration",
+    hue="Gender",              # Note: Colors that represent males and females 
+    size="Quality of Sleep",   # Note: point size shows sleep quality rating
+    col="Sleep Disorder",      # Note:represents the facet by disorder type
+    kind="scatter",
+)
+plt.title("The Realationship between Age and Sleep Duration (Added colors for gender, sized by Sleep Quality, and aceted by Sleep Disorder")
+plt.show()
 
 # c ) 1 plot using line instead of points (find a variable that makes sense emphasizing continuity and explain why)
 # Using same as 1: Relationship between age and stess leves. The lineplot can be apropriate here because age is typically a coninuous number therfore the trend observed will be more accuarte.
-#sns.lineplot( data=data , x="Age", y="Stress Level")
-#plt.title("The Realtionship between Age and Stress Levels")
-#plt.xlabel("Age")
-#plt.ylabel("Stress Level")
-#plt.show()
+sns.lineplot( data=data , x="Age", y="Stress Level")
+plt.title("The Realtionship between Age and Stress Levels")
+plt.xlabel("Age")
+plt.ylabel("Stress Level")
+plt.show()
 
 # d ) 1 plot illustrating standard deviation
 # The Realationship between Occupationd and Sleep Duration
-#sns.relplot(
-   # data=data,
-   # x="Occupation", y="Sleep Duration",
-   # kind="line",
-   # errorbar="sd"       # Note: show standard deviation 
-#)
-#plt.title("Average Sleep Duration by Occupation including a Standard Deviation)")
-#plt.xlabel("Occupation")
-#plt.xticks(rotation=90)
-#plt.ylabel("Sleep Duration ")
-#plt.show()
+sns.relplot(
+    data=data,
+    x="Occupation", y="Sleep Duration",
+    kind="line",
+    errorbar="sd"       # Note: show standard deviation 
+)
+plt.title("Average Sleep Duration by Occupation including a Standard Deviation)")
+plt.xlabel("Occupation")
+plt.xticks(rotation=90)
+plt.ylabel("Sleep Duration ")
+plt.show()
 
 # e ) 1 plot including a linear regression
 # The Relationship between Quality of Sleep and Sleep Duration
-#sns.lmplot( data=data, x="Sleep Duration", y="Quality of Sleep", hue="Gender")
-#plt.title("The Realtionship between Quality of Sleep and Sleep Duration by Gender including a Linear Regression")
-#plt.xlabel("Sleep Duration")
-#plt.ylabel("Quality of Sleep")
-#plt.show()
+sns.lmplot( data=data, x="Sleep Duration", y="Quality of Sleep", hue="Gender")
+plt.title("The Realtionship between Quality of Sleep and Sleep Duration conditionned by Gender including a Linear Regression")
+plt.xlabel("Sleep Duration")
+plt.ylabel("Quality of Sleep")
+plt.show()
 
 ###################################### b ###########################################################################################################################################################
 #a) 1 categorical scatter plot with jitter enabled
 # The relationship between BMI category and Sleep duration
-sns.catplot( data=data, kind="strip", x="BMI Category", y="Sleep Duration", jitter=True)
-plt.title("The Realtionship between BMI Category and Sleep Duration")
-plt.xlabel("BMI Category")
-plt.ylabel("Sleep Duration")
+sns.catplot( data=data, kind="strip", x="Heart Rate", y="Daily Steps", hue="Sleep Duration", jitter=True)
+plt.title("The Realtionship between Heart Rate and ")
+plt.xlabel("Heart Rate")
+plt.ylabel("Daily Steps")
 plt.show()
 
 #b) 1 categorical scatter plot with jitter disabled (explain your choice of variable for this one)
-# By dissabeling jitter we can se the tru alighnemnt of values along the y- axis and avoid false precisisons. Stress level is a discrete value, therfore intressting to look at with this particualr case.
-sns.catplot( data=data, kind="strip", x="Gender", y="Stress Level", jitter=False) #Note: False dissable jitter
-plt.title("The Realtionship between BMI Category and Sleep Duration")
-plt.xlabel("Gender")
-plt.ylabel("Stress Level")
+# By dissabeling jitter we can se the tre alighnemnt of values along the y- axis and avoid false precisisons. Stress level is a discrete value, therfore intressting to look at with this particualr case.
+sns.catplot( data=data, kind="strip", x="Stress Level", y="Physical Activity Level", jitter=False) #Note: False dissable jitter
+plt.title("The Realtionship between Stress Level and  Physical Activity Level")
+plt.xlabel("Stress Level")
+plt.xticks(rotation = 90)
+plt.ylabel("Physical Activity Level")
 plt.show()
 
 #c) 1 “beeswarm” plot representing 3 variables
@@ -264,10 +267,10 @@ plt.ylabel("Quality of Sleep")
 plt.show()
 
 #d) 1 box plot representing 3 variables
-sns.catplot(data=data, kind="box", x="Physical Activity Level", y="Quality of Sleep", hue="Gender")
-plt.title("The Realtionship between Physical activity levels and Quality of Sleep and if there is a significant doffrence between males and females.")
-plt.xlabel("Physical Activity Level")
-plt.ylabel(" Quality of Sleep")
+sns.catplot( data=data, kind="box", x="BMI Category", y="Sleep Duration")
+plt.title("The Realtionship between BMI Category and Sleep Duration")
+plt.xlabel("BMI Category")
+plt.ylabel("Sleep Duration")
 plt.show()
 
 #e) 1 box plot showing the shape of the distribution (boxenplot())
@@ -277,9 +280,9 @@ plt.show()
 #i) 1 point plot representing 3 variables showing 90% confidence intervals and lines in dashed style
 #j) 1 bar plot showing the number of observations in each category
 ###################################### c ###########################################################################################################################################################
-# a
-# b
-# c
+#a) 1 “heatmap” plot representing 2 variables with color intensity bar and adjusted bin width.
+#b) 1 distribution plot with 2 variables making use of bivariate density contours with amount of curves and its lowest level adjusted (use a kernel density estimation displot()).
+#c) 1 “heatmap” plot representing 3 variables, again of kind kde.
 
 
 
