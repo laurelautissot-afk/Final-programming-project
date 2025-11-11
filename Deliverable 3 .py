@@ -58,16 +58,58 @@ print(data.isnull())
 
 
 ############################## 3) Univariate non graphical EDA ########################################################################################################################################
-#This fonction allows us to ignore the person ID column because calculating their statistical relationship doesn't provide any important information
-#The axis 1 argument is to specify that we want to drop the whole column and not just a singular row
-excluding_person_ID = data.drop('Person ID' , axis=1)
-#missing median, mode, variance,kurtosis
+#Mean for each column
+print("The average age from the dataset is;", data['Age'].mean())
+print("The average sleep duration from the dataset is;",data['Sleep Duration'].mean())
+print("The average quality of sleep from the dataset is;",data['Quality of Sleep'].mean())
+print("The average physical activity from the dataset is;",data['Physical Activity Level'].mean())
+print("The average stress level from the dataset is;",data['Stress Level'].mean())
+print("The average heart rate from the dataset is;",data['Heart Rate'].mean())
+print("The average daily steps from the dataset is;",data['Daily Steps'].mean())
 
-#Prints all stat relationships but excludes the one we didnt want
-print(excluding_person_ID.describe())
-#mode
-total_occupations = len(data)
-print((data.value_counts()/total_occupations))
+#Median for each column
+print("The median for the ages in the datset are:" , data['Age'].median())
+print("The median for the sleep duration in the datset are:" , data['Sleep Duration'].median())
+print("The median for the quality of sleep in the datset are:" , data['Quality of Sleep'].median())
+print("The median for the physical activity in the datset are:" , data['Physical Activity Level'].median())
+print("The median for the stress level in the datset are:" , data['Stress Level'].median())
+print("The median for the heart rate in the datset are:" , data['Heart Rate'].median())
+print("The median for the daily steps in the datset are:" , data['Daily Steps'].median())
+
+#Mode for each column
+print("The most reccuring age is:" , data['Age'].mode())
+print("The most reccuring sleep duration is:" , data['Sleep Duration'].mode())
+print("The most reccuring quality of sleep score is:" , data['Quality of Sleep'].mode())
+print("The most reccuring physicial activity level is:" , data['Physical Activity Level'].mode())
+print("The most reccuring stress level is:" , data['Stress Level'].mode())
+print("The most reccuring heart rate is:" , data['Heart Rate'].mode())
+print("The most reccuring daily steps is:" , data['Daily Steps'].mode())
+
+#Standard deviation for each column
+import statistics
+print("The standard deviation for the ages in the dataset is:" , statistics.stdev(data['Age']))
+print("The standard deviation for the sleep duration in the dataset is:" , statistics.stdev(data['Sleep Duration']))
+print("The standard deviation for the quality of sleep in the dataset is:" , statistics.stdev(data['Quality of Sleep']))
+print("The standard deviation for the physical activity in the dataset is:" , statistics.stdev(data['Physical Activity Level']))
+print("The standard deviation for the stress level in the dataset is:" , statistics.stdev(data['Stress Level']))
+print("The standard deviation for the heart rate in the dataset is:" , statistics.stdev(data['Heart Rate']))
+print("The standard deviation for the daily steps in the dataset is:" , statistics.stdev(data['Daily Steps']))
+
+#Variance for each column
+print("The variance of age for this dataset is:" , statistics.variance(data['Age']))
+print("The variance of sleep duration for this dataset is:" , statistics.variance(data['Sleep Duration']))
+print("The variance of quality of sleep for this dataset is:" , statistics.variance(data['Quality of Sleep']))
+print("The variance of physical activity for this dataset is:" , statistics.variance(data['Physical Activity Level']))
+print("The variance of stress level for this dataset is:" , statistics.variance(data['Stress Level']))
+print("The variance of heart rate for this dataset is:" , statistics.variance(data['Heart Rate']))
+print("The variance of daily steps for this dataset is:" , statistics.variance(data['Daily Steps']))
+
+#Skewness for each column
+
+#Kurtosis for each column
+
+#Quartiles for each column
+
 
 #Analysing the data of our categorical values
 print(data.value_counts('Occupation'))
@@ -76,18 +118,19 @@ total_occupations = len(data)
 print((data.value_counts('Occupation')/total_occupations))
 #the mode of the categorical columns(most frequently and num unique categories )
 print(data['Occupation'].mode())
-
+print("The number of unique occupations is:", data['Occupation'].nunique())
 
 
 print(data.value_counts('BMI Category'))
 print((data.value_counts('BMI Category')/total_occupations))
 print(data['BMI Category'].mode())
-
+print("The number of unique BMI categories is:", data['BMI Category'].nunique())
 
 print(data.value_counts('Sleep Disorder'))
 print((data.value_counts('Sleep Disorder')/total_occupations))
 print(data['Sleep Disorder'].mode())
-##MISSING NUMBER OF UNIQUE CATEGORIES
+print("The number of unique types of sleep disorders is:", data['Sleep Disorder'].nunique())
+
 
 ############################### 4) Univariate graphical EDA ###########################################################################################################################################
 
