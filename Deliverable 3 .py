@@ -111,27 +111,27 @@ from scipy.stats import skew
 #If the value is 0, the distribution is symetrical
 #If the value is positive, the right side of the distribution is favoured(a larger tail)
 #If the value is negative, the left side of the distribution is favoured(a larger tail)
-age_skew = skew(data['Age'])
-duration_skew = skew(data['Sleep Duration'])
-quality_skew = skew(data['Quality of Sleep'])
-activity_skew = skew(data['Physical Activity Level'])
-stress_skew = skew(data['Stress Level'])
-heart_rate_skew = skew(data['Heart Rate'])
-steps_skew = skew(data['Daily Steps'])
 
-my_list = (age_skew , duration_skew , quality_skew , activity_skew , stress_skew , heart_rate_skew , steps_skew)
+#I made my variables into a dictionary so that i can analyse the value and the columns for the value of the skew
+#by doing this i can add the name and item argument to print out those desired values
+my_list = {"age_skew" : skew(data['Sleep Duration']), 
+           "duration_of_sleep_skew" : skew(data['Sleep Duration']) , 
+           "quality_of_sleep_skew" : skew(data['Quality of Sleep']), 
+           "physical_activity_skew" : skew(data['Physical Activity Level']) , 
+           "stress_level_skew" : skew(data['Stress Level']), 
+           "heart_rate_skew" : skew(data['Heart Rate']), 
+           "daily_steps_skew" : skew(data['Daily Steps'])}
 
 
-
-for item in my_list:
+for name , item in my_list.items():
     if item == 0:
-        print("The distribution is symetrical" , item)
+        print("The distribution is symetrical" , name , item )
 #by adding the variable item, we are also printing out the value assigned to the variable so we can see why they are leaning to one side    
     if item < 0:
-            print("The left side of the distribution is favoured for" , item)
+            print("The left side of the distribution is favoured for" , name, item )
 
     else:
-        print("The right side of the distribution is favoured" , item )
+        print("The right side of the distribution is favoured for" , name , item )
 
 #Kurtosis for each column
 #Kurtosis is essentially the amount of values/the probability of falling outside of the normal curve. They represent the tail ends of the normal distributon.
