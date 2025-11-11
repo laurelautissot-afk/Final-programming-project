@@ -105,10 +105,92 @@ print("The variance of heart rate for this dataset is:" , statistics.variance(da
 print("The variance of daily steps for this dataset is:" , statistics.variance(data['Daily Steps']))
 
 #Skewness for each column
+#This module allows us to do more complicated probability distributions, thus a deeper statistical analysis
+from scipy.stats import skew
+#Skewness will allow us to analyse whether one side of the distribution is favoured over another
+#If the value is 0, the distribution is symetrical
+#If the value is positive, the right side of the distribution is favoured(a larger tail)
+#If the value is negative, the left side of the distribution is favoured(a larger tail)
+age_skew = skew(data['Age'])
+duration_skew = skew(data['Sleep Duration'])
+quality_skew = skew(data['Quality of Sleep'])
+activity_skew = skew(data['Physical Activity Level'])
+stress_skew = skew(data['Stress Level'])
+heart_rate_skew = skew(data['Heart Rate'])
+steps_skew = skew(data['Daily Steps'])
+
+my_list = (age_skew , duration_skew , quality_skew , activity_skew , stress_skew , heart_rate_skew , steps_skew)
+
+print(my_list)
+
+for item in my_list:
+    if item == 0:
+        print("The distribution is symetrical")
+    
+    if item < 0:
+            print("The left side of the distribution is favoured")
+
+    else:
+        print("The right side of the distribution is favoured")
 
 #Kurtosis for each column
+#Kurtosis is essentially the amount of values/the probability of falling outside of the normal curve. They represent the tail ends of the normal distributon.
+from scipy.stats import kurtosis
+#the value we got from this calculation is moderate(-0.91), which indicates that the tails of our normal distribution graph aren't too large
+#0.5-(-0.5) is considerent normal, -1/1 - 0.5/(-0.5) is considered moderate and anything greater then 1/-1 it is considered very large tails
+print("The chances of the age falling into one of the two extremes of the normal distribution is:" , 
+      kurtosis(data['Age']))
+print("The chances of a individuals sleep duration falling into one of the two extremes of the normal distribution is:" , 
+      kurtosis(data['Sleep Duration']))
+print("The chances of a persons quality of sleep falling into one of the two extremes of the normal distribution is:" , 
+      kurtosis(data['Quality of Sleep']))
+print("The chances of the physicial activity level falling into one of the two extremes of the normal distribution is:" , 
+      kurtosis(data['Physical Activity Level']))
+print("The chances of an individuals stress level falling into one of the two extremes of the normal distribution is:" , 
+      kurtosis(data['Stress Level']))
+print("The chances of someones heart rate falling into one of the two extremes of the normal distribution is:" , 
+      kurtosis(data['Heart Rate']))
+print("The chances of the daily steps falling into one of the two extremes of the normal distribution is:" , 
+      kurtosis(data['Daily Steps']))
+
 
 #Quartiles for each column
+import numpy as np
+
+###Quatiles for age
+print("The Q1 for the age column is:" , np.percentile(data['Age'] , 25))
+print("The Q2 for the age column is:" , np.percentile(data['Age'] , 50))
+print("The Q3 for the age column is:" , np.percentile(data['Age'] , 75))
+
+###Quartiles for sleep duration
+print("The Q1 for the sleep duration column is:" , np.percentile(data['Sleep Duration'] , 25))
+print("The Q2 for the sleep duration  column is:" , np.percentile(data['Sleep Duration'] , 50))
+print("The Q3 for the sleep duration  column is:" , np.percentile(data['Sleep Duration'] , 75))
+
+###Quartiles for quality of sleep
+print("The Q1 for the quality of sleep column is:" , np.percentile(data['Quality of Sleep'] , 25))
+print("The Q2 for the quality of sleep column is:" , np.percentile(data['Quality of Sleep'] , 50))
+print("The Q3 for the quality of sleep column is:" , np.percentile(data['Quality of Sleep'] , 75))
+
+###Quartiles for physical activity
+print("The Q1 for the physical activity column is:" , np.percentile(data['Physical Activity Level'] , 25))
+print("The Q2 for the physical activity column is:" , np.percentile(data['Physical Activity Level'] , 50))
+print("The Q3 for the physical activity column is:" , np.percentile(data['Physical Activity Level'] , 75))
+
+###Quartiles for stress levels
+print("The Q1 for the stress level column is:" , np.percentile(data['Stress Level'] , 25))
+print("The Q2 for the stress level column is:" , np.percentile(data['Stress Level'] , 50))
+print("The Q3 for the stress level column is:" , np.percentile(data['Stress Level'] , 75))
+
+###Quartiles for heart rate
+print("The Q1 for the heart rate column is:" , np.percentile(data['Heart Rate'] , 25))
+print("The Q2 for the heart rate column is:" , np.percentile(data['Heart Rate'] , 50))
+print("The Q3 for the heart rate column is:" , np.percentile(data['Heart Rate'] , 75))
+
+###Quartiles for daily steps
+print("The Q1 for the daily step column is:" , np.percentile(data['Daily Steps'] , 25))
+print("The Q2 for the daily step column is:" , np.percentile(data['Daily Steps'] , 50))
+print("The Q3 for the daily step column is:" , np.percentile(data['Daily Steps'] , 75))
 
 
 #Analysing the data of our categorical values
