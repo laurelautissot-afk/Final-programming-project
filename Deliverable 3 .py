@@ -263,12 +263,25 @@ plt.xlabel("Sleep Duration")
 plt.show()
 
 ###################################### b ###########################################################################################################################################################
+# Q: Now use proportions or percentages rather than raw counts (use the “normalize” parameter from crosstab())
+# Corsstab will compute a simple cross tabulation of two (or more) factors / The normalize parameter in pd.crosstab() converts raw counts into proportions or percentages instead of showing just totals.
+# Asked the teacher for clearer data used Gender because: You use normalize for when you’re comparing counts of categories. So that is why we have to use gender and replace it with the other numerical value. 
+# 1
+question_a_gender_sleepdisorder = pd.crosstab(data["Gender"], data["Sleep Disorder"], normalize='index') * 100 #I put x a 100 to give me a percentage
+print("The Percentenges between Gender and Sleep Disorder:" , question_a_gender_sleepdisorder)
 
+# 2
+question_b_BMIcategory_Heartrate = pd.crosstab(data["BMI Category"], data["Gender"], normalize="index") * 100
+print("The Percentenges between BMI Category and Gender:" , question_b_BMIcategory_Heartrate)
+
+# 3
+question_c_Occupation_Gender = pd.crosstab(data["Occupation"], data["Gender"], normalize="index") * 100
+print("The Percentenges between Gender and Occupation:" , question_c_Occupation_Gender )
 
 ###################################### c ###########################################################################################################################################################
 # Q Generate at least one three-way frequency table (3 or more variables, by giving a list of variables to crosstab() rather than single variables)
-
-
+three_way_table_question_c = pd.crosstab(index=[data["Gender"], data["Sleep Disorder"]], columns=data["BMI Category"]) # Note: index = the rows of the table
+print(three_way_table_question_c)
 
 ################################# 6) Multivariate non graphical EDA ####################################################################################################################################
 
@@ -356,11 +369,41 @@ plt.ylabel("Sleep Duration")
 plt.show()
 
 #e) 1 box plot showing the shape of the distribution (boxenplot())
+sns.catplot(data=data, x="BMI Category", y="Sleep Duration", kind="boxen")
+plt.title("Distribution shape of Quality of Sleep across BMI Categories")
+plt.xlabel("BMI Category")
+plt.ylabel("Quality of Sleep")
+plt.show()
+
 #f) 1 split violin plot representing 3 variables with bandwidth adjusted for better visualization
+sns.catplot(data=data, x="Sleep Disorder", y="Sleep Duration", hue="Gender", kind="violin", inner="stick", split=True, bw=0.3) # use split = True to make the plot cleaner to compare bothe genders 
+plt.title(" The Relationship between Sleep Duration and Sleep Disorder split by Gender ")
+plt.xlabel("Sleep Disorder")
+plt.ylabel("Sleep Duration")
+plt.show()
+
 #g) 1 violin plot with scatter points inside the violin shapes
+#ASK ABOUT THIS ONE IT IS WEIRD
+violin_withpoints = sns.catplot( data=data, x="BMI Category", y="Physical Activity Level", kind="violin", inner=None)
+sns.swarmplot(data=data, x="BMI Category",y="Physical Activity Level", color="k", size=2)
+plt.title(" The Relationship between Heart Rate and BMI Category")
+plt.xlabel("BMI Category")
+plt.ylabel("Physical Activity Level")
+plt.show()
+
 #h) 1 bar plot representing 3 variables showing 97% confidence intervals
+sns.catplot(data=data, x="BMI Category", y="Heart Rate", hue="Gender", kind="bar", errorbar=("pi", 97)) #percentile interval
+plt.title("Comparison between males and females with their Mean Heart Rate by BMI Category")
+plt.xlabel("BMI Category")
+plt.ylabel("Heart Rate")
+plt.show()
+
 #i) 1 point plot representing 3 variables showing 90% confidence intervals and lines in dashed style
+
+
+
 #j) 1 bar plot showing the number of observations in each category
+
 ###################################### c ###########################################################################################################################################################
 #a) 1 “heatmap” plot representing 2 variables with color intensity bar and adjusted bin width.
 #b) 1 distribution plot with 2 variables making use of bivariate density contours with amount of curves and its lowest level adjusted (use a kernel density estimation displot()).
