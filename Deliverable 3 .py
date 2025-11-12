@@ -220,75 +220,75 @@ numerical_data=["Age", "Sleep Duration", "Quality of Sleep", "Physical Activity 
 ##################################### a ############################################################################################################################################################
 bins_for_each_variable={"Age": 8, "Sleep Duration": 12, "Quality of Sleep": 5, "Physical Activity Level": 8, "Stress Level": 5, "Heart Rate": 10, "Daily Steps": 7}
 for i in numerical_data:
-    sns.displot(data, x=i, bins=bins_for_each_variable[i]) ############ custom number of bins for each variable?
+    sns.displot(data, x=i, bins=bins_for_each_variable[i]) 
     plt.title("Histogram for " + i)
 
 ###################################### b ###########################################################################################################################################################
 #conditioned on Gender
 for i in numerical_data:
     sns.displot(data, x=i, bins=bins_for_each_variable[i], hue="Gender") 
-    plt.title("Histogram for " + i + " conditioned on Gender")
+    plt.title("Histogram for " + i + " Conditioned on Gender")
 #conditioned on BMI Category
 for i in numerical_data:
     sns.displot(data, x=i, bins=bins_for_each_variable[i], hue="BMI Category") 
-    plt.title("Histogram for " + i + " conditioned on BMI Category") ######### normal=normal weight
+    plt.title("Histogram for " + i + " Conditioned on BMI Category") ######### normal=normal weight ###################3
     
 ###################################### c #########################################################################################################################################################
 #Stack histogram conditioned on Gender
 for i in numerical_data:
     sns.displot(data, x=i, bins=bins_for_each_variable[i], hue="Gender", multiple="stack") 
-    plt.title("Stack histogram for " + i + " conditioned on Gender")
+    plt.title("Stack Histogram for " + i + " Conditioned on Gender")
 #Stack histogram conditioned on BMI Category
 for i in numerical_data:
     sns.displot(data, x=i, bins=bins_for_each_variable[i], hue="BMI Category", multiple="stack") 
-    plt.title("Stack histogram for " + i + " conditioned on BMI Category")
+    plt.title("Stack Histogram for " + i + " Conditioned on BMI Category")
 
 ####################################### d #########################################################################################################################################################
 #Dodge histogram conditioned on Gender
 for i in numerical_data:
     sns.displot(data, x=i, bins=bins_for_each_variable[i], hue="Gender", multiple="dodge") 
-    plt.title("Dodge histogram for " + i + " conditioned on Gender")
+    plt.title("Dodge Histogram for " + i + " Conditioned on Gender")
 #Dodge histogram conditioned on BMI Category
 for i in numerical_data:
     sns.displot(data, x=i, bins=bins_for_each_variable[i], hue="BMI Category", multiple="dodge") 
-    plt.title("Dodge histogram for " + i + " conditioned on BMI Category")
+    plt.title("Dodge Histogram for " + i + " Conditioned on BMI Category")
 
 ###################################### e ############################################################################################################################################################
 #Normalized histogram statistics conditioned on Gender
 for i in numerical_data:
     sns.displot(data, x=i, bins=bins_for_each_variable[i], hue="Gender", stat="density", common_norm=False)
-    plt.title("Normalized histogram statistics for " + i + " conditioned on Gender")
+    plt.title("Normalized Histogram Statistics for " + i + " Conditioned on Gender")
 #Normalized histogram statistics conditioned on BMI Category
 for i in numerical_data:
     sns.displot(data, x=i, bins=bins_for_each_variable[i], hue="BMI Category", stat="density", common_norm=False)
-    plt.title("Normalized histogram statistics for " + i + " conditioned on BMI Category")
+    plt.title("Normalized Histogram Statistics for " + i + " Conditioned on BMI Category")
 
 ###################################### f ############################################################################################################################################################
 #Kernel Density Estimation
 for i in numerical_data:
-    sns.displot(data, x=i, kind="kde", bw_adjust=1) 
+    sns.displot(data, x=i, kind="kde", bw_adjust=2) 
     plt.title("Kernel Density Estimation for " + i)
 #Kernel Density Estimation conditioned on Gender
 for i in numerical_data:
-    sns.displot(data, x=i, hue="Gender", kind="kde", bw_adjust=3)
-    plt.title("Kernel Density Estimation for " + i + " conditioned on Gender")
+    sns.displot(data, x=i, hue="Gender", kind="kde", bw_adjust=2)
+    plt.title("Kernel Density Estimation for " + i + " Conditioned on Gender")
 #Kernel Density Estimation conditioned on BMI Category
 for i in numerical_data:
-    sns.displot(data, x=i, hue="BMI Category", kind="kde", bw_adjust=3)
-    plt.title("Kernel Density Estimation for " + i + " conditioned on BMI Category")
+    sns.displot(data, x=i, hue="BMI Category", kind="kde", bw_adjust=2)
+    plt.title("Kernel Density Estimation for " + i + " Conditioned on BMI Category")
     
 ####################################### g #########################################################################################################################################################
-
 #Empirical Cummulative Distribution conditioned on Gender
 for i in numerical_data:
     sns.displot(data, x=i, hue="Gender", kind="ecdf")
-    plt.title("Empirical Cummulative Distribution for " + i + " conditioned on Gender")
+    plt.title("Empirical Cummulative Distribution for " + i + " Conditioned on Gender")
 #Empirical Cummulative Distribution conditioned on BMI Category
 for i in numerical_data:
     sns.displot(data, x=i, hue="BMI Category", kind="ecdf")
-    plt.title("Empirical Cummulative Distribution for " + i + " conditioned on BMI Category")
+    plt.title("Empirical Cummulative Distribution for " + i + " Conditioned on BMI Category")
+    
 #a) What is the distribution of the variable? (is the data normally distributed, skewed, bimodal, etc?)
-#
+##
 #b) Are there any outliers? (are there extreme values that fall outside the typical range?)
 #
 #c) What is the spread and central tendency? (where is the median? How spread out is the data?)
@@ -297,6 +297,7 @@ for i in numerical_data:
 #
 #e) How frequent are certain ranges of values? (which value ranges are most common?)
 #
+
 
 
 ################################# 5) Multivariate non graphical EDA ####################################################################################################################################
@@ -465,23 +466,32 @@ plt.ylabel("Heart Rate")
 plt.show()
 
 #i) 1 point plot representing 3 variables showing 90% confidence intervals and lines in dashed style
-
-
+sns.catplot(data=data, x="BMI Category", y="Heart Rate", hue="Gender", kind="point", errorbar=("pi", 90), linestyle="--") #percentile interval
+plt.title("Comparison between males and females with their Mean Heart Rate by BMI Category")
+plt.xlabel("BMI Category")
+plt.ylabel("Heart Rate")
+plt.show()
 
 #j) 1 bar plot showing the number of observations in each category
+sns.catplot(data=data, x="BMI Category", kind="count", hue="Gender") 
+plt.title("Number of Observations in each BMI Category")
+plt.xlabel("BMI Category")
+plt.ylabel("Count")
+plt.show()
+
 
 ###################################### c ###########################################################################################################################################################
 #a) 1 “heatmap” plot representing 2 variables with color intensity bar and adjusted bin width.
-sns.displot(data, x="Occupation", y="Quality of sleep", binwidth=(2, 0.5), cbar=True)
+sns.displot(data, x="Physical Activity Level", y="Sleep Duration", cbar=True, binwidth=(5,0.3))
+plt.title("Relation Between Sleep Duration and Physical Activity Level Using a Heatmap Plot")
+plt.show()
 
 #b) 1 distribution plot with 2 variables making use of bivariate density contours with amount of curves and its lowest level adjusted (use a kernel density estimation displot()).
-sns.displot(data, x="", y="", kind="kde") #making use of bivariate density contours with amount of curves and its lowest level adjusted (use a kernel density estimation displot())
+sns.displot(data, x="Sleep Duration", y="Stress Level", kind="kde", levels=10, thresh=0.2) #making use of bivariate density contours with amount of curves and its lowest level adjusted 
+plt.title("Relation Between Sleep Duration and Stress Level Using a Bivariate KDE Distribution")
+plt.show()
 
 #c) 1 “heatmap” plot representing 3 variables, again of kind kde.
-sns.displot(data, x="Occupation", y="Quality of sleep", binwidth=(2, 0.5), cbar=True, hue="", kind="kde", fill=True)
-
-
-
-
-
-
+sns.displot(data, x="Sleep Duration", y="Stress Level", kind="kde", levels=10, thresh=0.2, hue="Gender", fill= True, cbar=True) #making use of bivariate density contours with amount of curves and its lowest level adjusted 
+plt.title("Relation Between Sleep Duration and Stress Level Using a Bivariate KDE Distribution conditioned on Gender")
+plt.show()
