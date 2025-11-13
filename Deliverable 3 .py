@@ -309,7 +309,7 @@ for i in numerical_data:
 sns.catplot(data=data, x= "Sleep Disorder", y="Quality of Sleep", hue= "Gender", kind="violin", inner=None)
 plt.title("Comparison between males and females, with their reationship between Quality of Sleep and Sleep Disorders")
 plt.ylabel("Quality of Sleep") #category
-plt.xlabel("Sleep Duration") 
+plt.xlabel("Sleep Disorder") 
 plt.show()
 # 2) The raltionship between BMIcategory and Quality of sleep conditioned by gender. We can use  scatterplots to visualize how Quality of Sleep changes with BMI Category.
 sns.catplot(data=data,x="BMI Category", y="Heart Rate", kind="bar", hue="Gender")
