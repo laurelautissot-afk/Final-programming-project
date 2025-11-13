@@ -406,7 +406,7 @@ plt.show()
 #a) 1 categorical scatter plot with jitter enabled
 # The relationship between BMI category and Sleep duration
 sns.catplot( data=data, kind="strip", x="Heart Rate", y="Daily Steps", hue="Sleep Duration", jitter=True)
-plt.title("The Realtionship between Heart Rate and ")
+plt.title("The Realtionship between Heart Rate and Daily Steps")
 plt.xlabel("Heart Rate")
 plt.ylabel("Daily Steps")
 plt.show()
@@ -450,7 +450,6 @@ plt.ylabel("Sleep Duration")
 plt.show()
 
 #g) 1 violin plot with scatter points inside the violin shapes
-#ASK ABOUT THIS ONE IT IS WEIRD
 violin_withpoints = sns.catplot( data=data, x="BMI Category", y="Physical Activity Level", kind="violin", inner=None)
 sns.swarmplot(data=data, x="BMI Category",y="Physical Activity Level", color="k", size=2)
 plt.title(" The Relationship between Heart Rate and BMI Category")
