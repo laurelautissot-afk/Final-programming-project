@@ -304,14 +304,13 @@ for i in numerical_data:
 
 ##################################### a ############################################################################################################################################################
 #   Q: Make use of this approach at least 3 times with different variables from your dataset. 
-#1) The realtionship between Gender and Sleep Disorder. This can be done using boxplaot. Here one axis is numercial and the other is categorical.
-#This plot shows the median sleep duration and spead for both genders 
+#1) The realtionship between Quality of sleep and Sleep Disorder. This can be done using violin. 
 sns.catplot(data=data, x= "Sleep Disorder", y="Quality of Sleep", hue= "Gender", kind="violin", inner=None)
 plt.title("Comparison between males and females, with their reationship between Quality of Sleep and Sleep Disorders")
 plt.ylabel("Quality of Sleep") #category
 plt.xlabel("Sleep Disorder") 
 plt.show()
-# 2) The raltionship between BMIcategory and Quality of sleep conditioned by gender. We can use  scatterplots to visualize how Quality of Sleep changes with BMI Category.
+# 2) The raltionship between BMIcategory and Heart Rate conditioned by gender.
 sns.catplot(data=data,x="BMI Category", y="Heart Rate", kind="bar", hue="Gender")
 plt.title(" Comparison between males and females, with their BMI Category how it effect their Heart Rate ")
 plt.xlabel("BMI Category")
@@ -404,7 +403,7 @@ plt.show()
 
 ###################################### b ###########################################################################################################################################################
 #a) 1 categorical scatter plot with jitter enabled
-# The relationship between BMI category and Sleep duration
+# The relationship between Heart Rate and Daily Steps 
 sns.catplot( data=data, kind="strip", x="Heart Rate", y="Daily Steps", hue="Sleep Duration", jitter=True)
 plt.title("The Realtionship between Heart Rate and Daily Steps")
 plt.xlabel("Heart Rate")
@@ -412,7 +411,7 @@ plt.ylabel("Daily Steps")
 plt.show()
 
 #b) 1 categorical scatter plot with jitter disabled (explain your choice of variable for this one)
-# By dissabeling jitter we can se the tre alighnemnt of values along the y- axis and avoid false precisisons. Stress level is a discrete value, therfore intressting to look at with this particualr case.
+# By dissabeling jitter we can see that there is an alignment of values along the y- axis and we can avoid false precisisons. Stress level is a discrete value, therfore intressting to look at with this particualr case.
 sns.catplot( data=data, kind="strip", x="Stress Level", y="Physical Activity Level", jitter=False) #Note: False dissable jitter
 plt.title("The Realtionship between Stress Level and  Physical Activity Level")
 plt.xlabel("Stress Level")
