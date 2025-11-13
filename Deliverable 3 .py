@@ -374,7 +374,7 @@ plt.show()
 # c ) 1 plot using line instead of points (find a variable that makes sense emphasizing continuity and explain why)
 # Using same as 1: Relationship between age and stess leves. The lineplot can be apropriate here because age is typically a coninuous number therfore the trend observed will be more accuarte.
 sns.lineplot( data=data , x="Age", y="Stress Level")
-plt.title("The Realtionship between Age and Stress Levels")
+plt.title("The Realtionship between Age and Stress Levels (lines)")
 plt.xlabel("Age")
 plt.ylabel("Stress Level")
 plt.show()
@@ -405,7 +405,7 @@ plt.show()
 #a) 1 categorical scatter plot with jitter enabled
 # The relationship between Heart Rate and Daily Steps 
 sns.catplot( data=data, kind="strip", x="Heart Rate", y="Daily Steps", hue="Sleep Duration", jitter=True)
-plt.title("The Realtionship between Heart Rate and Daily Steps")
+plt.title("The Realtionship between Heart Rate and Daily Steps (Scatter with jitter enabled)")
 plt.xlabel("Heart Rate")
 plt.ylabel("Daily Steps")
 plt.show()
@@ -413,7 +413,7 @@ plt.show()
 #b) 1 categorical scatter plot with jitter disabled (explain your choice of variable for this one)
 # By dissabeling jitter we can see that there is an alignment of values along the y- axis and we can avoid false precisisons. Stress level is a discrete value, therfore intressting to look at with this particualr case.
 sns.catplot( data=data, kind="strip", x="Stress Level", y="Physical Activity Level", jitter=False) #Note: False dissable jitter
-plt.title("The Realtionship between Stress Level and  Physical Activity Level")
+plt.title("The Realtionship between Stress Level and  Physical Activity Level (Scatter with Jitter dissabled)")
 plt.xlabel("Stress Level")
 plt.xticks(rotation = 90)
 plt.ylabel("Physical Activity Level")
@@ -421,7 +421,7 @@ plt.show()
 
 #c) 1 “beeswarm” plot representing 3 variables
 sns.catplot( data=data, kind="swarm", x="Occupation", y="Quality of Sleep", hue="Gender")
-plt.title("The Realtionship between Occupation and Quality of Sleep, and how gender can differ in both categories.")
+plt.title("The Realtionship between Occupation and Quality of Sleep, and how gender can differ in both categories (beeswarm)")
 plt.xlabel("Occupation")
 plt.xticks(rotation=90)
 plt.ylabel("Quality of Sleep")
@@ -429,21 +429,21 @@ plt.show()
 
 #d) 1 box plot representing 3 variables
 sns.catplot( data=data, kind="box", x="BMI Category", y="Sleep Duration")
-plt.title("The Realtionship between BMI Category and Sleep Duration")
+plt.title("The Realtionship between BMI Category and Sleep Duration (3 variables)")
 plt.xlabel("BMI Category")
 plt.ylabel("Sleep Duration")
 plt.show()
 
 #e) 1 box plot showing the shape of the distribution (boxenplot())
 sns.catplot(data=data, x="BMI Category", y="Sleep Duration", kind="boxen")
-plt.title("Distribution shape of Quality of Sleep across BMI Categories")
+plt.title("Distribution shape of Quality of Sleep across BMI Categories (boxplot)")
 plt.xlabel("BMI Category")
 plt.ylabel("Quality of Sleep")
 plt.show()
 
 #f) 1 split violin plot representing 3 variables with bandwidth adjusted for better visualization
 sns.catplot(data=data, x="Sleep Disorder", y="Sleep Duration", hue="Gender", kind="violin", inner="stick", split=True, bw=0.3) # use split = True to make the plot cleaner to compare bothe genders 
-plt.title(" The Relationship between Sleep Duration and Sleep Disorder split by Gender ")
+plt.title(" The Relationship between Sleep Duration and Sleep Disorder split by Gender (violin with 3 variables)")
 plt.xlabel("Sleep Disorder")
 plt.ylabel("Sleep Duration")
 plt.show()
@@ -451,28 +451,28 @@ plt.show()
 #g) 1 violin plot with scatter points inside the violin shapes
 violin_withpoints = sns.catplot( data=data, x="BMI Category", y="Physical Activity Level", kind="violin", inner=None)
 sns.swarmplot(data=data, x="BMI Category",y="Physical Activity Level", color="k", size=2)
-plt.title(" The Relationship between Heart Rate and BMI Category")
+plt.title(" The Relationship between Heart Rate and BMI Category(violin with scatter)")
 plt.xlabel("BMI Category")
 plt.ylabel("Physical Activity Level")
 plt.show()
 
 #h) 1 bar plot representing 3 variables showing 97% confidence intervals
-sns.catplot(data=data, x="BMI Category", y="Heart Rate", hue="Gender", kind="bar", errorbar=("pi", 97)) #percentile interval
-plt.title("Comparison between males and females with their Mean Heart Rate by BMI Category")
+sns.catplot(data=data, x="BMI Category", y="Heart Rate", hue="Gender", kind="bar", errorbar=("pi", 97)) 
+plt.title("Comparison between males and females with their Mean Heart Rate by BMI Category (97% confidence interval)")
 plt.xlabel("BMI Category")
 plt.ylabel("Heart Rate")
 plt.show()
 
 #i) 1 point plot representing 3 variables showing 90% confidence intervals and lines in dashed style
-sns.catplot(data=data, x="BMI Category", y="Heart Rate", hue="Gender", kind="point", errorbar=("pi", 90), linestyle="--") #percentile interval
-plt.title("Comparison between males and females with their Mean Heart Rate by BMI Category")
+sns.catplot(data=data, x="BMI Category", y="Heart Rate", hue="Gender", kind="point", errorbar=("pi", 90), linestyle="--") 
+plt.title("Comparison between males and females with their Mean Heart Rate by BMI Category (90% confidence intervals)")
 plt.xlabel("BMI Category")
 plt.ylabel("Heart Rate")
 plt.show()
 
 #j) 1 bar plot showing the number of observations in each category
 sns.catplot(data=data, x="BMI Category", kind="count", hue="Gender") 
-plt.title("Number of Observations in each BMI Category")
+plt.title("Number of Observations in each BMI Category ")
 plt.xlabel("BMI Category")
 plt.ylabel("Count")
 plt.show()
