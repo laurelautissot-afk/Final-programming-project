@@ -35,7 +35,8 @@ female_rows = pd.DataFrame(female_rows)
 print(male_rows)
 print(female_rows)
 
-
+# Normal = Normal Weight
+data["BMI Category"] = data["BMI Category"].replace({"Normal": "Normal Weight"})
 
 ########################### 2) Preliminary steps #####################################################################################################################################################
 
@@ -233,7 +234,7 @@ for i in numerical_data:
 #conditioned on BMI Category
 for i in numerical_data:
     sns.displot(data, x=i, bins=bins_for_each_variable[i], hue="BMI Category") 
-    plt.title("Histogram for " + i + " Conditioned on BMI Category") ######### normal=normal weight ###################
+    plt.title("Histogram for " + i + " Conditioned on BMI Category")
     
 ###################################### c #########################################################################################################################################################
 #Stack histogram conditioned on Gender
