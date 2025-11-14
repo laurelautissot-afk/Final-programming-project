@@ -312,7 +312,7 @@ plt.xlabel("Sleep Disorder")
 plt.show()
 # 2) The raltionship between BMIcategory and Heart Rate conditioned by gender.
 sns.catplot(data=data,x="BMI Category", y="Heart Rate", kind="bar", hue="Gender")
-plt.title(" Comparison between males and females, with their BMI Category how it effect their Heart Rate ")
+plt.title(" Comparison between males and females, with their BMI Category how it affect their Heart Rate ")
 plt.xlabel("BMI Category")
 plt.ylabel("Heart Rate")
 plt.show()
@@ -356,6 +356,8 @@ print(three_way_table_question_c)
 # The Relationship between Age and Sleep Duration
 sns.relplot( data=data, x="Age", y="Sleep Duration", col="Gender", kind="scatter")
 plt.suptitle("The Realationship between Age and Sleep Duration")
+plt.xlabel("Age")
+plt.ylabel("Sleep Duration")
 plt.show()
 
 # b ) 1 plot representing 5 variables at once (x, y, hue, size, col)
