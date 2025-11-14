@@ -451,7 +451,7 @@ plt.show()
 #g) 1 violin plot with scatter points inside the violin shapes
 violin_withpoints = sns.catplot( data=data, x="BMI Category", y="Physical Activity Level", kind="violin", inner=None)
 sns.swarmplot(data=data, x="BMI Category",y="Physical Activity Level", color="k", size=2)
-plt.title(" The Relationship between Heart Rate and BMI Category(violin with scatter)")
+plt.title(" The Relationship between Physical Activity Levels and BMI Category(violin with scatter)")
 plt.xlabel("BMI Category")
 plt.ylabel("Physical Activity Level")
 plt.show()
