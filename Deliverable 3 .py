@@ -428,7 +428,7 @@ plt.ylabel("Quality of Sleep")
 plt.show()
 
 #d) 1 box plot representing 3 variables
-sns.catplot( data=data, kind="box", x="BMI Category", y="Sleep Duration")
+sns.catplot( data=data, kind="box", x="BMI Category", y="Sleep Duration", hue="Gender")
 plt.title("The Realtionship between BMI Category and Sleep Duration (3 variables)")
 plt.xlabel("BMI Category")
 plt.ylabel("Sleep Duration")
