@@ -115,7 +115,7 @@ from scipy.stats import skew
 
 #I made my variables into a dictionary so that i can analyse the value and the columns for the value of the skew
 #by doing this i can add the name and item argument to print out those desired values
-my_list = {"age_skew" : skew(data['Sleep Duration']), 
+my_list = {"age_skew" : skew(data['Age']), 
            "duration_of_sleep_skew" : skew(data['Sleep Duration']) , 
            "quality_of_sleep_skew" : skew(data['Quality of Sleep']), 
            "physical_activity_skew" : skew(data['Physical Activity Level']) , 
