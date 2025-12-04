@@ -346,7 +346,7 @@ print(three_way_table_question_c)
 # a ) 1 plot using Faceting feature (col parameter in the relplot() function) 
 # The Relationship between Age and Sleep Duration
 sns.relplot( data=data, x="Age", y="Sleep Duration", col="Gender", kind="scatter")
-plt.suptitle("The Realationship between Age and Sleep Duration")
+plt.suptitle("The Realationship between Age and Sleep Duration", y=1.1) # if y < 1, lowers the title
 plt.xlabel("Age")
 plt.ylabel("Sleep Duration")
 plt.show()
@@ -361,7 +361,7 @@ sns.relplot( data=data,
     col="Sleep Disorder",      # Note:represents the facet by disorder type
     kind="scatter",
 )
-plt.title("The Realationship between Age and Sleep Duration (Added colors for gender, sized by Sleep Quality, and aceted by Sleep Disorder")
+plt.title("The Realationship between Age and Sleep Duration (Added colors for gender, sized by Sleep Quality, and aceted by Sleep Disorder)", y=1.1)
 plt.show()
 
 # c ) 1 plot using line instead of points (find a variable that makes sense emphasizing continuity and explain why)
