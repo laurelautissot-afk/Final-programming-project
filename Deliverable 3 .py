@@ -361,7 +361,7 @@ sns.relplot( data=data,
     col="Sleep Disorder",      # Note:represents the facet by disorder type
     kind="scatter",
 )
-plt.title("The Realationship between Age and Sleep Duration (Added colors for gender, sized by Sleep Quality, and aceted by Sleep Disorder)", y=1.1)
+plt.suptitle("The Realationship between Age and Sleep Duration (Added colors for gender, sized by Sleep Quality, and aceted by Sleep Disorder)", y=1.1)
 plt.show()
 
 # c ) 1 plot using line instead of points (find a variable that makes sense emphasizing continuity and explain why)
